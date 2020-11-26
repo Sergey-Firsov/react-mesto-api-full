@@ -1,0 +1,9 @@
+.form__field-input_type_login {
+  border-bottom: 2px solid #CCC;
+  background-color: #000;
+  color: #FFF;
+}
+
+.form__field-input_type_login::placeholder, .form__field-input_type_login::-webkit-input-placeholder, .form__field-input_type_login::-moz-placeholder, .form__field-input_type_login::-ms-input-placeholder {
+  color: #CCC;
+}

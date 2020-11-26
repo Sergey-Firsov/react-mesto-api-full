@@ -1,0 +1,12 @@
+.profile__box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__box {
+    flex-direction: column;
+    margin-bottom: 36px;
+  }
+}

@@ -1,0 +1,9 @@
+@import url('__link/not-found__link.css');
+
+.not-found {
+  color: #FFF;
+  opacity: 0.8;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.22;
+}

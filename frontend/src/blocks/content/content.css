@@ -1,0 +1,11 @@
+@import url('__profile/content__profile.css');
+
+.content {
+  max-width: 882px;
+}
+
+@media screen and (max-width: 920px) {
+  .content {
+    padding: 0 19px;
+  }
+}

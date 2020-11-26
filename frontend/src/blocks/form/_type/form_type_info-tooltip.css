@@ -1,0 +1,5 @@
+.form_type_info-tooltip {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}

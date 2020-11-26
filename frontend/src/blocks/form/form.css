@@ -1,0 +1,17 @@
+@import url('__heading/form__heading.css');
+@import url('__heading/_type/form__heading_type_login.css');
+@import url('__heading/_type/form__heading_type_deleting-card.css');
+@import url('__heading/_type/form__heading_type_info-tooltip.css');
+@import url('__section/form__section.css');
+@import url('__field-input/form__field-input.css');
+@import url('__field-input/_type/form__field-input_type_login.css');
+@import url('__field-input/_type/form__field-input_type_error.css');
+@import url('__input-error/form__input-error.css');
+@import url('__input-error/_active/form__input-error_active.css');
+@import url('__submit-button/form__submit-button.css');
+@import url('__submit-button/_type/form__submit-button_type_login.css');
+@import url('__submit-button/_type/form__submit-button_type_deleting-card.css');
+@import url('__submit-button/_type/form__submit-button_type_info-tooltip.css');
+@import url('__submit-button/_inactive/form__submit-button_inactive.css');
+@import url('__link/form__link.css');
+@import url('__icon/form__icon.css');

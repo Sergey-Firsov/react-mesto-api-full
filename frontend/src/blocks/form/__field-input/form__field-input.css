@@ -1,0 +1,33 @@
+.form__field-input {
+  width: 100%;
+  height: 28px;
+  font-size: 14px;
+  line-height: 1.25;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border-bottom 0.2s ease-in-out;
+  outline: none;
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.form__field-input::placeholder, .form__field-input::-webkit-input-placeholder, .form__field-input::-moz-placeholder, .form__field-input::-ms-input-placeholder {
+  color: #C4C4C4;
+  font-family: Inter;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 510px) {
+  .form__field-input {
+    height: 24px;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .form__field-input::placeholder, .form__field-input::-webkit-input-placeholder, .form__field-input::-moz-placeholder, .form__field-input::-ms-input-placeholder {
+    font-size: 12px;
+  }
+}

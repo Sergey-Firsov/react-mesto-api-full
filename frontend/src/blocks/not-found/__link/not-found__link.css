@@ -1,0 +1,10 @@
+.not-found__link {
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.not-found__link:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,9 @@
+.form__heading_type_deleting-card {
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 510px) {
+  .form__heading_type_deleting-card {
+    margin-bottom: 25px;
+  }
+}

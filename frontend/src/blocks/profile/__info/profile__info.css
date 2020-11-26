@@ -1,0 +1,11 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: fit-content(300px) min-content;
+  grid-gap: 4px 18px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile__info {
+    grid-gap: 0 9px;
+  }
+}

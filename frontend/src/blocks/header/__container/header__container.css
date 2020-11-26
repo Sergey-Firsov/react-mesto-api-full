@@ -1,0 +1,10 @@
+.header__container {
+  display: flex;
+  color: #FFF;
+}
+
+@media screen and (max-width: 510px) {
+  .header__container {
+    flex-direction: column;
+  }
+}

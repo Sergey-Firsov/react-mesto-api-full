@@ -1,0 +1,14 @@
+@import url('./vendor/normalize.css');
+@import url('./fonts/fonts.css');
+@import url('./blocks/page/page.css');
+@import url('./blocks/content/content.css');
+@import url('./blocks/header/header.css');
+@import url('./blocks/profile/profile.css');
+@import url('./blocks/cards/cards.css');
+@import url('./blocks/card/card.css');
+@import url('./blocks/footer/footer.css');
+@import url('./blocks/popup/popup.css');
+@import url('./blocks/popup/_visible/popup_visible.css');
+@import url('./blocks/form/form.css');
+@import url('./blocks/form/_type/form_type_info-tooltip.css');
+@import url('./blocks/not-found/not-found.css');

@@ -1,0 +1,7 @@
+@media screen and (max-width: 510px) {
+  .popup__close-button_type_info-tooltip {
+    top: -56px;
+    right: 50%;
+    transform: translateX(50%) rotate(45deg);
+  }
+}

@@ -1,0 +1,14 @@
+.header__username {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 0 24px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 510px) {
+  .header__username {
+    margin: 0;
+    font-size: 14px;
+  }
+}

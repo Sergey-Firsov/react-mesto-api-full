@@ -1,0 +1,11 @@
+.form__icon {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 510px) {
+  .form__icon {
+    margin-bottom: 40px;
+  }
+}

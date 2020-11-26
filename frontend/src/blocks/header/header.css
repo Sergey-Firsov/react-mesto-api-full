@@ -1,0 +1,25 @@
+@import url('__logo/header__logo.css');
+@import url('__container/header__container.css');
+@import url('__username/header__username.css');
+@import url('__link/header__link.css');
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 882px;
+  min-height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 920px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .header {
+    min-height: 56px;
+  }
+}

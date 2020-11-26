@@ -1,0 +1,13 @@
+.form__section {
+  margin-bottom: 10px;
+}
+
+.form__section:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 510px) {
+  .form__section {
+    margin-bottom: 7px;
+  }
+}
