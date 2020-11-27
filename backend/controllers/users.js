@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
 const getUsers = (req, res) => {
@@ -20,10 +21,15 @@ const getProfile = (req, res) => {
 };
 
 const createUser = (req, res) => {
-  const { name, about, avatar } = req.body;
+  const {
+    name, about, email, password, avatar,
+  } = req.body;
 
-  User.create({ name, about, avatar })
-    .then((user) => res.status(200).send(user))
+  bcrypt.hash(password, 10)
+    .then((hash) => User.create({
+      name, about, email, password: hash, avatar,
+    }))
+    .then((user) => res.status(201).send(user))
     .catch(() => res.status(400).send({ message: 'Переданы некорректные данные' }));
 };
 
