@@ -58,6 +58,19 @@ const updateAvatar = (req, res) => {
     .catch(() => res.status(400).send({ message: 'Переданы некорректные данные' }));
 };
 
+const getCurrentUserData = (req, res) => {
+  User.findById(req.user._id)
+    .orFail(new Error('NotValidId'))
+    .then((user) => res.status(200).send(user))
+    .catch((err) => {
+      if (err.message === 'NotValidId') {
+        res.status(404).send({ message: 'Нет пользователя с таким id' });
+      } else {
+        res.status(404).send({ message: 'Нет пользователя с таким id' });
+      }
+    });
+};
+
 const login = (req, res) => {
   const { email, password } = req.body;
 
@@ -79,5 +92,5 @@ const login = (req, res) => {
 };
 
 module.exports = {
-  getUsers, getProfile, createUser, updateProfile, updateAvatar, login,
+  getUsers, getProfile, createUser, updateProfile, updateAvatar, login, getCurrentUserData,
 };
