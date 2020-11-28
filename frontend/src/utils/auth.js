@@ -37,7 +37,7 @@ const getUserData = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization" : `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     }
   })
   .then((res) => {

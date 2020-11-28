@@ -1,7 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
+const auth = require('./middlewares/auth.js');
 
 const { PORT = 3000 } = process.env;
 
@@ -15,16 +18,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  req.user = {
-    _id: '5fa1716b46b3ea1368fbdaeb',
-  };
-
-  next();
-});
+app.use(cookieParser());
 
 app.use('/', usersRouter);
+
+app.use(auth);
+
 app.use('/', cardsRouter);
 
 app.use((req, res) => {
