@@ -1,29 +1,25 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const BadRequest = require('../errors/badRequest.js');
+const NotFound = require('../errors/notFound.js');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 
-const getUsers = (req, res) => {
+const getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.status(200).send(users))
-    .catch(() => res.status(404).send({ message: 'Произошла ошибка' }));
+    .catch(() => next(new NotFound('Произошла ошибка')));
 };
 
-const getProfile = (req, res) => {
+const getProfile = (req, res, next) => {
   User.findById(req.params.userId)
-    .orFail(new Error('NotValidId'))
+    .orFail(new NotFound('Нет пользователя с таким id'))
     .then((user) => res.status(200).send(user))
-    .catch((err) => {
-      if (err.message === 'NotValidId') {
-        res.status(404).send({ message: 'Нет пользователя с таким id' });
-      } else {
-        res.status(404).send({ message: 'Нет пользователя с таким id' });
-      }
-    });
+    .catch(() => next(new NotFound('Нет пользователя с таким id')));
 };
 
-const createUser = (req, res) => {
+const createUser = (req, res, next) => {
   const {
     name, about, email, password, avatar,
   } = req.body;
@@ -33,10 +29,10 @@ const createUser = (req, res) => {
       name, about, email, password: hash, avatar,
     }))
     .then((user) => res.status(201).send(user))
-    .catch(() => res.status(400).send({ message: 'Переданы некорректные данные' }));
+    .catch(() => next(new BadRequest('Переданы некорректные данные')));
 };
 
-const updateProfile = (req, res) => {
+const updateProfile = (req, res, next) => {
   const { name, about } = req.body;
 
   User.findByIdAndUpdate(req.user._id, { name, about }, {
@@ -44,10 +40,10 @@ const updateProfile = (req, res) => {
     runValidators: true,
   })
     .then((user) => res.status(200).send(user))
-    .catch(() => res.status(400).send({ message: 'Переданы некорректные данные' }));
+    .catch(() => next(new BadRequest('Переданы некорректные данные')));
 };
 
-const updateAvatar = (req, res) => {
+const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
 
   User.findByIdAndUpdate(req.user._id, { avatar }, {
@@ -55,23 +51,16 @@ const updateAvatar = (req, res) => {
     runValidators: true,
   })
     .then((user) => res.status(200).send(user))
-    .catch(() => res.status(400).send({ message: 'Переданы некорректные данные' }));
+    .catch(() => next(new BadRequest('Переданы некорректные данные')));
 };
 
-const getCurrentUserData = (req, res) => {
+const getCurrentUserData = (req, res, next) => {
   User.findById(req.user._id)
-    .orFail(new Error('NotValidId'))
     .then((user) => res.status(200).send(user))
-    .catch((err) => {
-      if (err.message === 'NotValidId') {
-        res.status(404).send({ message: 'Нет пользователя с таким id' });
-      } else {
-        res.status(404).send({ message: 'Нет пользователя с таким id' });
-      }
-    });
+    .catch(() => next(new NotFound('Нет пользователя с таким id')));
 };
 
-const login = (req, res) => {
+const login = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
@@ -85,10 +74,11 @@ const login = (req, res) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
+        sameSite: true,
       })
         .end();
     })
-    .catch((err) => res.status(401).send({ message: err.message }));
+    .catch(next);
 };
 
 module.exports = {

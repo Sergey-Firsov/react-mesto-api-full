@@ -69,7 +69,7 @@ function App() {
     .catch((err) => alert(err));
   }
 
-  function handleRegister(email, password) {
+  function handleRegister(email, password, resetingForm) {
     auth.register(email, password)
     .then((res) => {
 
@@ -82,10 +82,14 @@ function App() {
       }
     })
     .catch((err) => console.log(err))
-    .finally(() => setInfoTooltipOpen(true));
+    .finally(() => {
+      setInfoTooltipOpen(true)
+
+      resetingForm();
+    });
   }
 
-  function handleLogin(email, password) {
+  function handleLogin(email, password, resetingForm) {
 
     auth.authorize(email, password)
     .then((res) => {
@@ -99,7 +103,8 @@ function App() {
         return;
       }
     })
-    .catch((err) => alert(err));
+    .catch((err) => alert(err))
+    .finally(() => resetingForm());
   }
 
   function signOut(){

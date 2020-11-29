@@ -23,12 +23,7 @@ function Login({ onLogin }) {
       return;
     }
 
-    onLogin(data.email, data.password);
-
-    setData({
-      email: '',
-      password: ''
-    });
+    onLogin(data.email, data.password, () => setData({ email: '', password: '' }));
   }
 
   return (

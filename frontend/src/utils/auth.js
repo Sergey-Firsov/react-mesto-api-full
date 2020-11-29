@@ -35,7 +35,6 @@ const authorize = (email, password) => {
 
 const getUserData = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
-    //credentials: 'include',
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
