@@ -1,6 +1,6 @@
 {
-  "homepage": "https://sergey-firsov.github.io/react-mesto-auth/",
-  "name": "mesto-react",
+  "homepage": "https://myplace.students.nomoredomains.work/",
+  "name": "mesto-react-api-full",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

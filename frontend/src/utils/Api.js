@@ -125,7 +125,7 @@ class Api {
 }
 
 const api = new Api({
-  url: '/'
+  url: 'https://api.myplace.students.nomoredomains.work/'
 });
 
 export default api;
