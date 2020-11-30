@@ -28,7 +28,12 @@ const createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, about, email, password: hash, avatar,
     }))
-    .then((user) => res.status(201).send(user))
+    .then((user) => res.status(201).send({
+      data: {
+        _id: user._id,
+        email: user.email,
+      },
+    }))
     .catch(() => next(new BadRequest('Переданы некорректные данные')));
 };
 
@@ -70,13 +75,7 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
-
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        sameSite: true,
-      })
-        .end();
+      res.status(200).send({ token });
     })
     .catch(next);
 };

@@ -25,6 +25,7 @@ function App() {
     loggedIn: false,
     email: ''
   });
+  const [jwt, setJwt] = React.useState('');
   const [deletedСard, setDeletedСard] = React.useState({});
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
@@ -34,22 +35,6 @@ function App() {
 
   React.useEffect(tokenCheck, []);
 
-  React.useEffect(() => {
-    Promise.all([
-      api.getInitialUserInfo(),
-
-      api.getInitialCards()
-    ])
-    .then(([ userData, cards ]) => {
-      setCurrentUser(userData);
-
-      setCards(cards);
-    })
-    .catch((error) => {
-      alert(error);
-    });
-  }, []);
-
   function tokenCheck() {
     const token = getToken();
 
@@ -57,40 +42,51 @@ function App() {
       return;
     }
 
-    auth.getUserData(token)
-    .then((data) => {
-      setUserData({
-        loggedIn: true,
-        email: data.data.email
-      })
+    setJwt(token);
 
-      history.push(ROUTES_MAP.MAIN);
-    })
-    .catch((err) => alert(err));
+    Promise.all([
+      api.getInitialUserInfo(token),
+
+      api.getInitialCards(token)
+    ])
+      .then(([ userData, cards ]) => {
+        setCurrentUser(userData);
+
+        setCards(cards);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    auth.getUserData(token)
+      .then((data) => {
+        setUserData({
+          loggedIn: true,
+          email: data.email
+        });
+
+        history.push(ROUTES_MAP.MAIN);
+      })
+      .catch((err) => alert(err));
   }
 
-  function handleRegister(email, password, resetingForm) {
+  function handleRegister(email, password) {
     auth.register(email, password)
-    .then((res) => {
+      .then((res) => {
 
-      if(res.data._id) {
-        setRegistrationStatus(true);
+        if(res.data._id) {
+          setRegistrationStatus(true);
 
-        history.push(ROUTES_MAP.SIGN_IN);
-      } else {
-        return;
-      }
-    })
-    .catch((err) => console.log(err))
-    .finally(() => {
-      setInfoTooltipOpen(true)
-
-      resetingForm();
-    });
+          history.push(ROUTES_MAP.SIGN_IN);
+        } else {
+          return;
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setInfoTooltipOpen(true));
   }
 
   function handleLogin(email, password, resetingForm) {
-
     auth.authorize(email, password)
     .then((res) => {
 
@@ -119,10 +115,10 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(item => item._id === currentUser._id);
+    const isLiked = card.likes.some(item => item === currentUser._id);
 
     if(!isLiked) {
-      api.putLike(card._id)
+      api.putLike(card._id, jwt)
       .then((newCard) => {
         const newCards = cards.map(cardItem => cardItem._id === card._id ? newCard : cardItem);
         setCards(newCards);
@@ -131,7 +127,7 @@ function App() {
         alert(error);
       });
     } else {
-      api.deleteLike(card._id)
+      api.deleteLike(card._id, jwt)
       .then((newCard) => {
         const newCards = cards.map(cardItem => cardItem._id === card._id ? newCard : cardItem);
         setCards(newCards);
@@ -143,7 +139,7 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card._id)
+    api.deleteCard(card._id, jwt)
     .then(() => {
       const newCards = cards.filter(cardItem => {
         return cardItem._id !== card._id;
@@ -192,7 +188,7 @@ function App() {
   }
 
   function handleUpdateUser(dataUser) {
-    api.editUserInfo(dataUser.name, dataUser.about)
+    api.editUserInfo(dataUser.name, dataUser.about, jwt)
     .then((result) => {
       setCurrentUser(result);
     })
@@ -202,7 +198,7 @@ function App() {
   }
 
   function handleUpdateAvatar(dataUser) {
-    api.editAvatar(dataUser.avatar)
+    api.editAvatar(dataUser.avatar, jwt)
     .then((result) => {
       setCurrentUser(result);
     })
@@ -212,7 +208,7 @@ function App() {
   }
 
   function handleAddPlaceSubmit(dataCard) {
-    api.addNewCard(dataCard.name, dataCard.link)
+    api.addNewCard(dataCard.name, dataCard.link, jwt)
     .then((newCard) => {
       setCards([newCard, ...cards]);
     })

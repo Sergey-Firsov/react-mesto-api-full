@@ -23,7 +23,9 @@ function Register({ onRegister }) {
       return;
     }
 
-    onRegister(data.email, data.password, () => setData({ email: '', password: '' }));
+    onRegister(data.email, data.password);
+
+    setData({ email: '', password: '' });
   }
 
   return (

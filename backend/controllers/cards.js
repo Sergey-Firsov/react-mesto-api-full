@@ -17,9 +17,17 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  Card.findByIdAndRemove(req.params.cardId)
-    .orFail(new NotFound('Нет карточки с таким id'))
-    .then((card) => res.status(200).send(card))
+  Card.findById(req.params.cardId)
+    .then((card) => {
+      if (JSON.stringify(card.owner) !== JSON.stringify(req.user._id)) {
+        return;
+      }
+
+      Card.findByIdAndRemove(req.params.cardId)
+        .orFail(new NotFound('Нет карточки с таким id'))
+        .then((deletingCard) => res.status(200).send(deletingCard))
+        .catch(() => next(new NotFound('Нет карточки с таким id')));
+    })
     .catch(() => next(new NotFound('Нет карточки с таким id')));
 };
 
