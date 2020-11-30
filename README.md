@@ -12,4 +12,8 @@
 
 Ссылка на проект: https://myplace.students.nomoredomains.work/.
 
+Сервер: https://api.myplace.students.nomoredomains.work/
+
+IP адрес: 130.193.56.84
+
 _Автор работы Сергей Фирсов_
