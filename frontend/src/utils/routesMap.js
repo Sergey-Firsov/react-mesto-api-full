@@ -1,5 +1,5 @@
 const ROUTES_MAP = {
-  MAIN: '/',
+  MAIN: 'https://myplace.students.nomoredomains.work/',
   SIGN_UP: '/sign-up',
   SIGN_IN: '/sign-in',
   ALL: '*'
