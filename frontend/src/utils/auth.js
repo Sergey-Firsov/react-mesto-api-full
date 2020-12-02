@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'/*'https://api.myplace.students.nomoredomains.work'*/;
+const BASE_URL = 'https://api.myplace.students.nomoredomains.work';
 
 function getResponseData(res, errorText) {
   if(res.ok) {
