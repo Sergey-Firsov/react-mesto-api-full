@@ -125,7 +125,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://api.myplace.students.nomoredomains.work/'
+  url: 'http://localhost:3000/'/*'https://api.myplace.students.nomoredomains.work/'*/
 });
 
 export default api;

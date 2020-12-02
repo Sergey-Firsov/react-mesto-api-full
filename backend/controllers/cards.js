@@ -1,6 +1,7 @@
 const Card = require('../models/card');
 const BadRequest = require('../errors/badRequest.js');
 const NotFound = require('../errors/notFound.js');
+const Forbidden = require('../errors/forbidden.js');
 
 const getCards = (req, res, next) => {
   Card.find({})
@@ -20,7 +21,7 @@ const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
       if (JSON.stringify(card.owner) !== JSON.stringify(req.user._id)) {
-        return;
+        throw new Forbidden('Вы не можете удалять чужие карточки');
       }
 
       Card.findByIdAndRemove(req.params.cardId)

@@ -41,14 +41,14 @@ const userSchema = new mongoose.Schema({
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     validate: {
       validator(v) {
-        return /^https?:\/\/w*\.?[0-9a-zA-Z_\W]+(\.[a-zA-Z]+)+[0-9a-zA-Z_\W]*#?$/im.test(v);
+        return /^https?:\/\/w*\.?[0-9a-zA-Z-]+(\.[0-9a-zA-Z-])*\.[a-zA-Z]+\S*#?$/im.test(v);
       },
       message: 'Введите ссылку на изображение',
     },
   },
 });
 
-userSchema.statics.findUserByCredentials = function(email, password) {
+userSchema.statics.findUserByCredentials = function f(email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {

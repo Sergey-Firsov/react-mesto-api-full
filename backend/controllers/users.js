@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const BadRequest = require('../errors/badRequest.js');
 const NotFound = require('../errors/notFound.js');
+const Conflict = require('../errors/conflict.js');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
@@ -34,7 +35,12 @@ const createUser = (req, res, next) => {
         email: user.email,
       },
     }))
-    .catch(() => next(new BadRequest('Переданы некорректные данные')));
+    .catch((err) => {
+      if (err.code === 11000) {
+        next(new Conflict('Пользователь с таким email уже существует'));
+      }
+      next(new BadRequest('Переданы некорректные данные'));
+    });
 };
 
 const updateProfile = (req, res, next) => {
