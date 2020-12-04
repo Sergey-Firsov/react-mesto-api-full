@@ -8,7 +8,6 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
-const auth = require('./middlewares/auth.js');
 const { requestLogger, errorLogger } = require('./middlewares/Logger.js');
 const NotFound = require('./errors/notFound.js');
 
@@ -40,8 +39,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use('/', usersRouter);
-
-app.use(auth);
 
 app.use('/', cardsRouter);
 

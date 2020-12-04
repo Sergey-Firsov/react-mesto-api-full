@@ -52,7 +52,7 @@ router.get('/users/me', auth, getCurrentUserData);
 
 router.get('/users/:userId', celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().hex(),
+    userId: Joi.string().hex().length(24),
   }),
 }), auth, getProfile);
 

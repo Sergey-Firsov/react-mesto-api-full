@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
+const auth = require('../middlewares/auth.js');
 const {
   getCards, createCard, deleteCard, putLike, deleteLike,
 } = require('../controllers/cards');
 
-router.get('/cards', getCards);
+router.get('/cards', auth, getCards);
 
 router.post('/cards', celebrate({
   body: Joi.object().keys({
@@ -17,24 +18,24 @@ router.post('/cards', celebrate({
       return helpres.message('Введена некорректная ссылка');
     }),
   }),
-}), createCard);
+}), auth, createCard);
 
 router.delete('/cards/:cardId', celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex(),
+    cardId: Joi.string().hex().length(24),
   }),
-}), deleteCard);
+}), auth, deleteCard);
 
 router.put('/cards/:cardId/likes', celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex(),
+    cardId: Joi.string().hex().length(24),
   }),
-}), putLike);
+}), auth, putLike);
 
 router.delete('/cards/:cardId/likes', celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex(),
+    cardId: Joi.string().hex().length(24),
   }),
-}), deleteLike);
+}), auth, deleteLike);
 
 module.exports = router;
