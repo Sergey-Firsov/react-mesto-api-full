@@ -1,11 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
-//const rateLimit = require('express-rate-limit');
-//const helmet = require('helmet');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const { requestLogger, errorLogger } = require('./middlewares/Logger.js');
@@ -24,19 +21,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
-//app.use(helmet());
 app.use(cors());
 
 app.use(requestLogger);
-
-/*const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: 100,
-  message: 'Вы превысили количество запросов',
-});
-app.use(limiter);*/
 
 app.use('/', usersRouter);
 
