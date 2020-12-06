@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.myplace.students.nomoredomains.work';
+const BASE_URL = 'https://api.myplace.students.nomoredomains.work/';
 
 function getResponseData(res, errorText) {
   if(res.ok) {
@@ -8,7 +8,7 @@ function getResponseData(res, errorText) {
 }
 
 const register = (email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}signup`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
@@ -21,7 +21,7 @@ const register = (email, password) => {
 }
 
 const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${BASE_URL}signin`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
@@ -34,7 +34,7 @@ const authorize = (email, password) => {
 }
 
 const getUserData = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${BASE_URL}users/me`, {
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
