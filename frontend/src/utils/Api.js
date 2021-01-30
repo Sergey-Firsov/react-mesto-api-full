@@ -1,3 +1,5 @@
+import ROUTES_MAP from './routesMap.js';
+
 class Api {
   constructor({url}) {
     this._url = url;
@@ -125,7 +127,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://api.myplace.students.nomoredomains.work/'
+  url: ROUTES_MAP.BASE_URL
 });
 
 export default api;

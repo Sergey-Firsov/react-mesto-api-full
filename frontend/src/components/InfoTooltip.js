@@ -9,7 +9,8 @@ function InfoTooltip({ onClose, isOpen, status }) {
     <PopupWithForm
       title={status ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так! Попробуйте ещё раз.'}
       name="info-tooltip" onClose={onClose} isOpen={isOpen}>
-      <img className="form__icon" src={status ? successIcon : failIcon} alt={status ? 'Успех!' : 'Неудача.'} onClick={onClose} />
+      <img className="form__icon" src={status ? successIcon : failIcon} alt={status ? 'Успех!' : 'Неудача.'}
+        onClick={onClose} />
     </PopupWithForm>
 	);
 }

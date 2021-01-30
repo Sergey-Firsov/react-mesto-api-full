@@ -24,13 +24,16 @@ function EditPlacePopup({ onClose, isOpen, onAddPlace }) {
   }
 
 	return (
-		<PopupWithForm title="Новое место" buttonText="Создать" onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit}>
+    <PopupWithForm title="Новое место" buttonText="Создать" onClose={onClose} isOpen={isOpen}
+      onSubmit={handleSubmit}>
       <div className="form__section">
-        <input className="form__field-input" value={name || ''} onChange={handleChangeName} type="text" name="inputPlaceDescription" minLength="1" maxLength="30" placeholder="Название" required />
+        <input className="form__field-input" value={name || ''} onChange={handleChangeName} type="text"
+          name="inputPlaceDescription" minLength="1" maxLength="30" placeholder="Название" required />
         <span className="form__input-error"></span>
       </div>
       <div className="form__section">
-        <input className="form__field-input" value={link || ''} onChange={handleChangeLink} type="url" name="inputPlaceUrl" placeholder="Ссылка на картинку" required />
+        <input className="form__field-input" value={link || ''} onChange={handleChangeLink} type="url"
+          name="inputPlaceUrl" placeholder="Ссылка на картинку" required />
         <span className="form__input-error"></span>
       </div>
     </PopupWithForm>

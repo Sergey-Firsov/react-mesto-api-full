@@ -6,7 +6,7 @@ function PageWithForm({ title, buttonText, linkText, onChange, data, onSubmit })
 
 	return (
     <section className="login page__login">
-      <form className="form" onSubmit={onSubmit} /*noValidate*/>
+      <form className="form" onSubmit={onSubmit}>
         <h2 className="form__heading form__heading_type_login">{title}</h2>
         <div className="form__section">
           <input className="form__field-input form__field-input_type_login" type="email"
@@ -18,7 +18,9 @@ function PageWithForm({ title, buttonText, linkText, onChange, data, onSubmit })
             name="password" value={data.password} onChange={onChange} placeholder="Пароль" required />
           <span className="form__input-error"></span>
         </div>
-        <button className="form__submit-button form__submit-button_type_login" type="submit" >{buttonText}</button>
+        <button className="form__submit-button form__submit-button_type_login" type="submit" >
+          {buttonText}
+        </button>
         <Link className="form__link" to={ROUTES_MAP.SIGN_IN} disabled>{linkText}</Link>
       </form>
     </section>
