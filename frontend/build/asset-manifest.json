@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.dfe28354.chunk.css",
+    "main.css": "/static/css/main.0dfc53b2.chunk.css",
     "main.js": "/static/js/main.ab64620c.chunk.js",
     "main.js.map": "/static/js/main.ab64620c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7199aaa0.js",
@@ -8,9 +8,9 @@
     "static/js/2.a169e16d.chunk.js": "/static/js/2.a169e16d.chunk.js",
     "static/js/2.a169e16d.chunk.js.map": "/static/js/2.a169e16d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.99f0fc6abc39486bb73234b7de7f7903.js": "/precache-manifest.99f0fc6abc39486bb73234b7de7f7903.js",
+    "precache-manifest.eee476b39648a0ffa85bc9898babf501.js": "/precache-manifest.eee476b39648a0ffa85bc9898babf501.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.dfe28354.chunk.css.map": "/static/css/main.dfe28354.chunk.css.map",
+    "static/css/main.0dfc53b2.chunk.css.map": "/static/css/main.0dfc53b2.chunk.css.map",
     "static/js/2.a169e16d.chunk.js.LICENSE.txt": "/static/js/2.a169e16d.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/popup-close-button.bdfb8ebb.svg",
     "static/media/fail-icon.jpg": "/static/media/fail-icon.78c426f5.jpg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.7199aaa0.js",
     "static/js/2.a169e16d.chunk.js",
-    "static/css/main.dfe28354.chunk.css",
+    "static/css/main.0dfc53b2.chunk.css",
     "static/js/main.ab64620c.chunk.js"
   ]
 }
