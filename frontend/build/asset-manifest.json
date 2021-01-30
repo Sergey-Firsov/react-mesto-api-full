@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-mesto-auth/static/css/main.f5e44360.chunk.css",
-    "main.js": "/react-mesto-auth/static/js/main.6d10ffcc.chunk.js",
-    "main.js.map": "/react-mesto-auth/static/js/main.6d10ffcc.chunk.js.map",
-    "runtime-main.js": "/react-mesto-auth/static/js/runtime-main.cbbc15b2.js",
-    "runtime-main.js.map": "/react-mesto-auth/static/js/runtime-main.cbbc15b2.js.map",
-    "static/js/2.b9bbb76d.chunk.js": "/react-mesto-auth/static/js/2.b9bbb76d.chunk.js",
-    "static/js/2.b9bbb76d.chunk.js.map": "/react-mesto-auth/static/js/2.b9bbb76d.chunk.js.map",
-    "index.html": "/react-mesto-auth/index.html",
-    "precache-manifest.44d2d12111fb0170c8757d6b5393313e.js": "/react-mesto-auth/precache-manifest.44d2d12111fb0170c8757d6b5393313e.js",
-    "service-worker.js": "/react-mesto-auth/service-worker.js",
-    "static/css/main.f5e44360.chunk.css.map": "/react-mesto-auth/static/css/main.f5e44360.chunk.css.map",
-    "static/js/2.b9bbb76d.chunk.js.LICENSE.txt": "/react-mesto-auth/static/js/2.b9bbb76d.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/react-mesto-auth/static/media/popup-close-button.bdfb8ebb.svg",
-    "static/media/fail-icon.jpg": "/react-mesto-auth/static/media/fail-icon.78c426f5.jpg",
-    "static/media/header-logo.svg": "/react-mesto-auth/static/media/header-logo.855a8c98.svg"
+    "main.css": "/static/css/main.dfe28354.chunk.css",
+    "main.js": "/static/js/main.ab64620c.chunk.js",
+    "main.js.map": "/static/js/main.ab64620c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7199aaa0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7199aaa0.js.map",
+    "static/js/2.a169e16d.chunk.js": "/static/js/2.a169e16d.chunk.js",
+    "static/js/2.a169e16d.chunk.js.map": "/static/js/2.a169e16d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.99f0fc6abc39486bb73234b7de7f7903.js": "/precache-manifest.99f0fc6abc39486bb73234b7de7f7903.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.dfe28354.chunk.css.map": "/static/css/main.dfe28354.chunk.css.map",
+    "static/js/2.a169e16d.chunk.js.LICENSE.txt": "/static/js/2.a169e16d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/popup-close-button.bdfb8ebb.svg",
+    "static/media/fail-icon.jpg": "/static/media/fail-icon.78c426f5.jpg",
+    "static/media/header-logo.svg": "/static/media/header-logo.855a8c98.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cbbc15b2.js",
-    "static/js/2.b9bbb76d.chunk.js",
-    "static/css/main.f5e44360.chunk.css",
-    "static/js/main.6d10ffcc.chunk.js"
+    "static/js/runtime-main.7199aaa0.js",
+    "static/js/2.a169e16d.chunk.js",
+    "static/css/main.dfe28354.chunk.css",
+    "static/js/main.ab64620c.chunk.js"
   ]
 }

@@ -14,8 +14,8 @@ function PageWithForm({ title, buttonText, linkText, onChange, data, onSubmit })
           <span className="form__input-error"></span>
         </div>
         <div className="form__section">
-          <input className="form__field-input form__field-input_type_login" type ="password"
-            name="password" value={data.password} onChange={onChange} placeholder="Пароль" required />
+          <input className="form__field-input form__field-input_type_login" type ="password" name="password"
+            value={data.password} onChange={onChange} placeholder="Пароль" minLength="6" required />
           <span className="form__input-error"></span>
         </div>
         <button className="form__submit-button form__submit-button_type_login" type="submit" >

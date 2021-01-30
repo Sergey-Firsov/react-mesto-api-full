@@ -10,7 +10,7 @@ router.post('/signup', celebrate({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8).custom((value, helpres) => {
+    password: Joi.string().required().min(6).custom((value, helpres) => {
       if (/\S/.test(value)) {
         return value;
       }
@@ -30,7 +30,7 @@ router.post('/signup', celebrate({
 router.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8).custom((value, helpres) => {
+    password: Joi.string().required().min(6).custom((value, helpres) => {
       if (/\S/.test(value)) {
         return value;
       }
